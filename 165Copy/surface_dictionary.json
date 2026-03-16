@@ -1,0 +1,17 @@
+{
+  "blued": {
+    "synonyms": ["blued", "bluing"]
+  },
+  "white zinc-plated": {
+    "synonyms": ["white zinc-plated", "white zinc", "zinc white", "galvanized white"]
+  },
+  "zinc-plated": {
+    "synonyms": ["zinc-plated", "zinc plated", "zinc plating", "galvanized", "galvanised"]
+  },
+  "painted": {
+    "synonyms": ["painted", "coated", "paint", "painting"]
+  },
+  "none": {
+    "synonyms": ["none", "untreated", "no treatment", "raw", "bare"]
+  }
+}

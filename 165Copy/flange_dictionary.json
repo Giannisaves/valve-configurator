@@ -1,0 +1,44 @@
+{
+  "#150": {
+    "synonyms": ["ansi 150", "ansi150", "class150", "ansi-150", "#150", "ansi #150", "150 ansi", "class150", "class 150", "150 class", "class-150"]
+  },
+  "#300": {
+    "synonyms": ["ansi 300", "ansi-300", "#300", "ansi #300", "300 ansi", "class 300", "300 class", "class300", "300class", "class-300"]
+  },
+  "pn16": {
+    "synonyms": ["pn 16", "pn-16", "pn16", "pn 16"]
+  },
+  "pn40": {
+    "synonyms": ["pn 40", "pn-40", "pn40"]
+  },
+  "pn6": {
+    "synonyms": ["pn 6", "pn-6", "pn6"]
+  },
+  "pn10": {
+    "synonyms": ["pn 10", "pn-10", "pn10"]
+  },
+  "pn16/40": {
+    "synonyms": ["pn 16-40", "pn-16/40", "pn16/40", "pn 16/40"]
+  },
+  "#600": {
+    "synonyms": ["ansi 600", "ansi-600", "class600", "class 600", "#600", "600class", "600 class", "600#", "class-600"]
+  },
+  "pn63": {
+    "synonyms": ["pn63", "pn 63", "pn-63", "pn64", "pn 64", "pn-64"]
+  },
+  "pn25": {
+    "synonyms": ["pn25", "pn 25", "pn-25", "pn25", "pn 25", "pn-25"]
+  },
+  "pn100": {
+    "synonyms": ["pn100", "pn 100", "pn-100", "pn100", "pn 100", "pn-100"]
+  },
+  "jis16k": {
+    "synonyms": ["jis16k", "jis 16 k", "jis-16-k", "jis 16k", "jis-16k", "jis 16", "jis-16", "16k"]
+  },
+  "jis20k": {
+    "synonyms": ["jis20k", "jis 20 k", "jis-20-k", "jis 20k", "jis-20k", "jis 20", "jis-20", "20k"]
+  },
+  "jis5k": {
+    "synonyms": ["jis5k", "jis 5 k", "jis-5-k", "jis 5k", "jis-5k", "jis 5", "jis-5", "5k"]
+  }
+}

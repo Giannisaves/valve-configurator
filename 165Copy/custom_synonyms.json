@@ -1,0 +1,17 @@
+{
+  "type d groove": {
+    "synonyms": ["type d", "type d flange", "flanged type d"]
+  },
+  "NPT B.1.20.1": {
+    "synonyms": ["threaded npt", "npt threaded", "thread npt", "npt thread", "npt threads", "threads npt"]
+  },
+  "deadman spring return lever": {
+    "synonyms": ["dead man", "deadman", "deadman handle", "deadman lever", "dead man lever", "spring return lever"]
+  },
+  "v-ball": {
+    "synonyms": ["vball", "v ball", "control ball", "vport", "v-port", "v-sphere", "v-shape", "v sphere", "v shape", "fluid control"]
+  },
+  "type a flat face flanges": {
+    "synonyms": ["flat face flanges", "flat face flange", "flat face type a", "type a"]
+  }
+}
