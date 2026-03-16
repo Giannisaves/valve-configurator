@@ -2,8 +2,9 @@ streamlit
 pandas
 numpy
 scikit-learn
-sentence-transformers==2.2.2
-huggingface-hub==0.14.1
+sentence-transformers==3.0.1
+transformers==4.41.2
+huggingface-hub==0.23.2
 torch
 openpyxl
 fpdf
