@@ -105,7 +105,8 @@ FILE_PATH = resource_path("Lavoro per AI.xlsx")
 
 @st.cache_resource
 def load_model():
-    from sentence_transformers import SentenceTransformer
+    from sentence_transformers import SentenceTransformer, util
+    globals()["util"] = util
     return SentenceTransformer("sentence-transformers/paraphrase-MiniLM-L6-v2")
 
 @st.cache_data
