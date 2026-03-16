@@ -1,0 +1,17 @@
+{
+  "carbon steel": {
+    "synonyms": ["carbonsteel", "wcb", "carbon", "acciaio al carbonio"]
+  },
+  "stainless steel": {
+    "synonyms": ["stainless", "aisi 304", "aisi 316", "inox", "acciaio inox", "aisi304", "aisi316"]
+  },
+  "super duplex": {
+    "synonyms": ["duplex", "superduplex", "sduplex", "f53", "f55"]
+  },
+  "brass": {
+    "synonyms": ["ottone", "br", "cuzn", "bronzo"]
+  },
+  "cast iron": {
+    "synonyms": ["ghisa", "gi", "castiron"]
+  }
+}
