@@ -3,6 +3,7 @@ pandas
 numpy
 scikit-learn
 sentence-transformers==2.2.2
+huggingface-hub==0.14.1
 torch
 openpyxl
 fpdf
