@@ -1,0 +1,283 @@
+{
+    "Split body cast iron": {
+        "synonyms": [
+            "split body en gjl 250",
+            "en gjl 250",
+            "series 73",
+            "series 730",
+            "split body in cast iron",
+            "euro sfer"
+        ],
+        "codes": [
+            "73*"
+        ],
+        "level": 1
+    },
+
+    "Flanged":{
+        "synonyms": [
+            "flanged",
+            "flange type",
+            "wafer valve",
+            "split body",
+            "split wafer",
+            "split body valve",
+            "split wafer valve"
+        ],
+        "codes": [
+            "76*",
+            "68*",
+            "72*"
+        ],
+        "level": 0
+    },
+    "Threaded":{
+        "synonyms": [
+            "threaded",
+            "with thread"
+        ],
+        "codes": [
+            "709*",
+            "71*",
+            "70*"
+        ],
+        "level": 0
+    },
+    "Welded":{
+        "synonyms": [
+            "welded",
+            "with weld end connections"
+        ],
+        "codes": [
+            "70*",
+            "71*",
+            "709*"
+        ],
+        "level": 0
+    },
+    "Split body API608": {
+        "synonyms": [
+            "split body 68",
+            "split body api608",
+            "series 68",
+            "api608",
+            "split body nace",
+            "split body series 68"
+        ],
+        "codes": [
+            "68*"
+        ],
+        "level": 1
+    },
+    "Split Body": {
+        "synonyms": [
+            "valve 76",
+            "split body 68",
+            "split body api608",
+            "series 68",
+            "split body 76",
+            "split body 608",
+            "valve split body",
+            "series 76"
+        ],
+        "codes": [
+            "76*",
+            "68*"
+        ],
+        "level": 1
+    },
+    "Split Body V-PACK": {
+        "synonyms": [
+            "series 76 with vpack",
+            "split body vpack",
+            "serie 76 with v pack",
+            "split body v pack",
+            "split body with ptfe stem seals"
+        ],
+        "codes": [
+            "76V*",
+            "76*V*"
+        ],
+        "level": 2
+    },
+    "Split Wafer": {
+        "synonyms": [
+            "wafer split",
+            "series 764",
+            "split wafer",
+            "series 763",
+            "series wafer split",
+            "series split wafer",
+            "split wafer valve",
+            "wafer split valve"
+        ],
+        "codes": [
+            "763*",
+            "764*"
+        ],
+        "level": 1
+    },
+    "Split Wafer V-PACK": {
+        "synonyms": [
+            "split wafer with vpack",
+            "wafer split with vpack",
+            "wafer split valve with v pack"
+        ],
+        "codes": [
+            "763V*",
+            "764V*"
+        ],
+        "level": 2
+    },
+    
+    "Wafer Valve": {
+        "synonyms": [
+            "wafer type",
+            "72 series",
+            "72*",
+            "compact",
+            "series 72",
+            "wafer"
+        ],
+        "codes": [
+            "72"
+        ],
+        "level": 1
+    },
+        "Wafer V-PACK": {
+        "synonyms": [
+            "v pack wafer",
+            "wafer with vpack",
+            "wafer with anello ptfe",
+            "wafer v pack",
+            "wafer with v pack"
+        ],
+        "codes": [
+            "721V*",
+            "722V*",
+            "720V*"
+        ],
+        "level": 2
+    },
+        
+    "Wafer V-BALL": {
+        "synonyms": [
+            "wafer with vball",
+            "wafer with v ball",
+            "wafer with v60 ball",
+            "wafer with v90 ball",
+            "wafer with v30 60 ball",
+            "wafer with control ball"
+        ],
+        "codes": [
+            "72******V*"
+        ],
+        "level": 2
+    },
+    "Three-Way Valve": {
+        "synonyms": [
+            "three way valve",
+            "combi sfer",
+            "3 way flanged",
+            "3 way",
+            "3 way threaded",
+            "3 ways",
+            "three way"
+        ],
+        "codes": [
+            "77*"
+        ],
+        "level": 1
+    },
+       
+    "Two-Piece Valve": {
+        "synonyms": [
+            "two piece",
+            "threaded valve two piece",
+            "two piece valve",
+            "inox val",
+            "threaded 2 pcs",
+            "Series 70",
+            "2-pcs",
+            "2 pcs",
+            "2 piece",
+            "2 pieces",
+            "2-piece",
+            "2-pieces",
+            "2 pieces threaded valve"
+        ],
+        "codes": [
+            "70*"
+        ],
+        "level": 1
+    },
+   
+    
+    "Three-Piece Valve": {
+        "synonyms": [
+            "radiamont",
+            "three piece ball valve",
+            "radiamont",
+            "3 piece",
+            "3-pieces",
+            "tre pezzi a saldare",
+            "3 pezzi filettata",
+            "radiamont welded",
+            "radiamont valve",
+            "radiamont",
+            "threaded three-piece",
+            "three-piece welded",
+            "three piece welded",
+            "three-piece threaded",
+            "three piece threaded",
+            "three-piece valve",
+            "3-piece valve",
+            "valve 3-piece",
+            "radiamont three-piece",
+            "three pcs valve",
+            "valve three pieces",
+            "3-pcs",
+            "three-piece",
+            "three-pieces",
+            "3-piece",
+            "3-pcs",
+            "3-pieces",
+            "3 pcs valve",
+            "3 pcs",
+            "3 pieces",
+            "3 pieces valve",
+            "welded 3-piece valve",
+            "threaded 3-piece valve",
+            "3 pezzi a saldare",
+            "valvola tre pezzi"
+        ],
+        "codes": [
+            "71*"
+        ],
+        "level": 1
+    },
+    "Threaded Monoblock Valve": {
+        "synonyms": [
+            "monoblock",
+            "monoblock npt thread",
+            "monoblock with threaded end connections",
+            "threaded monoblock",
+            "inox val monoblock",
+            "threaded from solid bar",
+            "series 70 from solid bar",
+            "threaded from bar stock",
+            "series 70 from bar stock",
+            "monoblock gas thread",
+            "threaded monoblock",
+            "welded monoblock",
+            "welded valve from solid bar",
+            "welded valve from bar stock"
+        ],
+        "codes": [
+            "709G*",
+            "709N*"
+        ],
+        "level": 1
+
+   }
+}
