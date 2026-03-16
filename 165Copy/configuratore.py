@@ -5,7 +5,6 @@ import torch
 import asyncio
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sentence_transformers import SentenceTransformer, util
 import re
 import os
 from PIL import Image
@@ -106,7 +105,8 @@ FILE_PATH = resource_path("Lavoro per AI.xlsx")
 
 @st.cache_resource
 def load_model():
-    return SentenceTransformer("sentence-transformers/paraphrase-MiniLM-L6-v2")  # Più veloce!
+    from sentence_transformers import SentenceTransformer
+    return SentenceTransformer("sentence-transformers/paraphrase-MiniLM-L6-v2")
 
 @st.cache_data
 def carica_excel(path):
