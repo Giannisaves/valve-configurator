@@ -12,6 +12,9 @@ from PIL import Image
 import json
 import joblib
 import numpy as np
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 
 # Corregge il problema dei loop async in Streamlit
@@ -26,7 +29,7 @@ st.set_page_config(layout="wide")
 import base64
 from io import BytesIO
 
-image_path = "Valpres.png"
+image_path = BASE_DIR / "Valpres.png"
 
 if os.path.exists(image_path):
     image = Image.open(image_path)
@@ -57,16 +60,16 @@ else:
 
 
 # Carica il dizionario di sinonimi
-DICTIONARY_PATH = "valve_dictionary_english.json"
+DICTIONARY_PATH = BASE_DIR / "valve_dictionary_english.json"
 
 with open(DICTIONARY_PATH, "r", encoding="utf-8") as file:
     valve_dict = json.load(file)
 
-MATERIAL_DICT_PATH = "material_dictionary.json"
+MATERIAL_DICT_PATH = BASE_DIR / "material_dictionary.json"
 with open(MATERIAL_DICT_PATH, "r", encoding="utf-8") as f:
     material_dict = json.load(f)
 
-FLANGE_DICT_PATH = "flange_dictionary.json"
+FLANGE_DICT_PATH = BASE_DIR / "flange_dictionary.json"
 with open(FLANGE_DICT_PATH, "r", encoding="utf-8") as file:
     flange_dict = json.load(file)
 
@@ -89,7 +92,7 @@ st.markdown(
 )
 
 # Percorso del file Excel
-FILE_PATH = "Lavoro per AI.xlsx"
+FILE_PATH = BASE_DIR / "Lavoro per AI.xlsx"
 
 @st.cache_resource
 def load_model():
@@ -347,11 +350,11 @@ def ricerca_per_descrizione():
 
     
     # Calcolo embedding se non già salvati
-    df["embedding"] = carica_embedding("embeddings.npy", df["descrizione_lower"].tolist(), model)
+    df["embedding"] = carica_embedding(BASE_DIR / "embeddings.npy", df["descrizione"].tolist(), model)
 
     
     # Calcolo TF-IDF
-    df["TF-IDF"] = np.load("tfidf_dict.npy", allow_pickle=True).tolist()
+    df["TF-IDF"] = np.load(BASE_DIR / "tfidf_dict.npy", allow_pickle=True)
 
 
      
@@ -610,7 +613,7 @@ def normalizza_custom_terms(query):
 
 def trova_flangiatura(query):
     query = query.lower().strip()
-    with open("flange_dictionary.json", "r", encoding="utf-8") as file:
+    with open(BASE_DIR / "surface_dictionary.json", "r", encoding="utf-8") as f:
         flange_dict = json.load(file)
 
     for standard, details in flange_dict.items():
