@@ -16,6 +16,16 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
+def resource_path(*parts):
+    return BASE_DIR.joinpath(*parts)
+
+@st.cache_data
+def load_tfidf_cached(descrizioni):
+    tfidf_path = resource_path("tfidf_dict.npy")
+    if tfidf_path.exists():
+        return np.load(tfidf_path, allow_pickle=True).tolist()
+    return calcola_tfidf(descrizioni)
+
 
 # Corregge il problema dei loop async in Streamlit
 try:
@@ -29,7 +39,7 @@ st.set_page_config(layout="wide")
 import base64
 from io import BytesIO
 
-image_path = BASE_DIR / "Valpres.png"
+image_path = resource_path("Valpres.png")
 
 if os.path.exists(image_path):
     image = Image.open(image_path)
@@ -60,16 +70,16 @@ else:
 
 
 # Carica il dizionario di sinonimi
-DICTIONARY_PATH = BASE_DIR / "valve_dictionary_english.json"
+DICTIONARY_PATH = resource_path("valve_dictionary_english.json")
 
 with open(DICTIONARY_PATH, "r", encoding="utf-8") as file:
     valve_dict = json.load(file)
 
-MATERIAL_DICT_PATH = BASE_DIR / "material_dictionary.json"
+MATERIAL_DICT_PATH = resource_path("material_dictionary.json")
 with open(MATERIAL_DICT_PATH, "r", encoding="utf-8") as f:
     material_dict = json.load(f)
 
-FLANGE_DICT_PATH = BASE_DIR / "flange_dictionary.json"
+FLANGE_DICT_PATH = resource_path("flange_dictionary.json")
 with open(FLANGE_DICT_PATH, "r", encoding="utf-8") as file:
     flange_dict = json.load(file)
 
@@ -92,7 +102,7 @@ st.markdown(
 )
 
 # Percorso del file Excel
-FILE_PATH = BASE_DIR / "Lavoro per AI.xlsx"
+FILE_PATH = resource_path("Lavoro per AI.xlsx")
 
 @st.cache_resource
 def load_model():
@@ -329,11 +339,11 @@ def ricerca_per_descrizione():
     model = load_model()
 
     # ✅ Caricamento embeddings sincronizzati (evita errore di dimensione)
-    embeddings = carica_embedding(BASE_DIR / "embeddings.npy", df["descrizione_lower"].tolist(), model)
+    embeddings = carica_embedding(resource_path("embeddings.npy"), df["descrizione_lower"].tolist(), model)
     df["embedding"] = embeddings
 
     # ✅ Caricamento TF-IDF (assumendo tu abbia già salvato tfidf_dict.npy correttamente)
-    df["TF-IDF"] = np.load(BASE_DIR / "tfidf_dict.npy", allow_pickle=True).tolist()
+    df["TF-IDF"] = load_tfidf_cached(df["descrizione_lower"].tolist())
 
     # Conversione prezzo in numerico
     df["Gross Price"] = pd.to_numeric(df["Gross Price"], errors='coerce')
@@ -350,11 +360,11 @@ def ricerca_per_descrizione():
 
     
     # Calcolo embedding se non già salvati
-    df["embedding"] = carica_embedding(BASE_DIR / "embeddings.npy", df["descrizione_lower"].tolist(), model)
+    df["embedding"] = carica_embedding(resource_path("embeddings.npy"), df["descrizione_lower"].tolist(), model)
 
     
     # Calcolo TF-IDF
-    df["TF-IDF"] = np.load(BASE_DIR / "tfidf_dict.npy", allow_pickle=True).tolist()
+    df["TF-IDF"] = load_tfidf_cached(df["descrizione_lower"].tolist())
 
 
      
@@ -507,7 +517,7 @@ def ricerca_per_descrizione():
                 
                 st.markdown(f"{row['descrizione'].replace(chr(10), '<br>')}", unsafe_allow_html=True)
             # Cerca il PDF nella cartella pdf_disegni/
-                pdf_filename = os.path.join("pdf_disegni", f"{row['Series']}.pdf")
+                pdf_filename = resource_path("pdf_disegni", f"{row['Series']}.pdf")
                 if os.path.exists(pdf_filename):
                     with open(pdf_filename, "rb") as pdf_file:
                         st.download_button(label="📄 Download PDF drawing", data=pdf_file, file_name=f"{row['Series']}.pdf", mime="application/pdf", key=f"pdf_{row['Series']}_{idx}")
@@ -578,7 +588,7 @@ def normalizza_materiali(query):
     return query
 
 def normalizza_surface(query):
-    with open(BASE_DIR / "surface_dictionary.json", "r", encoding="utf-8") as file:
+    with open(resource_path("surface_dictionary.json"), "r", encoding="utf-8") as file:
         surface_dict = json.load(file)
 
     query = query.lower()
@@ -590,7 +600,7 @@ def normalizza_surface(query):
 
 
 def normalizza_flangiature(query):
-   with open(BASE_DIR / "flange_dictionary.json", "r", encoding="utf-8") as file:
+    with open(resource_path("flange_dictionary.json"), "r", encoding="utf-8") as file:
         flange_dict = json.load(file)
 
     query = query.lower()
@@ -601,7 +611,7 @@ def normalizza_flangiature(query):
     return query
 
 def normalizza_custom_terms(query):
-    with open(BASE_DIR / "custom_synonyms.json", "r", encoding="utf-8") as file:
+    with open(resource_path("custom_synonyms.json"), "r", encoding="utf-8") as file:
         custom_dict = json.load(file)
 
     query = query.lower()
@@ -613,7 +623,7 @@ def normalizza_custom_terms(query):
 
 def trova_flangiatura(query):
     query = query.lower().strip()
-    with open(BASE_DIR / "flange_dictionary.json", "r", encoding="utf-8") as file:
+    with open(resource_path("flange_dictionary.json"), "r", encoding="utf-8") as file:
         flange_dict = json.load(file)
 
     for standard, details in flange_dict.items():
@@ -639,7 +649,7 @@ def trova_materiale(query):
 
 def filtra_stem_sealing(query, df):
     query = query.lower()
-    with open(BASE_DIR / "stem_sealing_dictionary.json", "r", encoding="utf-8") as file:
+    with open(resource_path("stem_sealing_dictionary.json"), "r", encoding="utf-8") as file:
         sealing_dict = json.load(file)
 
     df["Stem sealing"] = df["Stem sealing"].astype(str).str.strip().str.lower()
@@ -667,8 +677,8 @@ def ricerca_per_filtri():
     # Caricamento TF-IDF e embedding già pronti
     model = load_model()
     df["descrizione_lower"] = df["descrizione"].astype(str).str.lower().str.strip()
-    df["embedding"] = carica_embedding("embeddings.npy", df["descrizione_lower"].tolist(), model)
-    df["TF-IDF"] = np.load("tfidf_dict.npy", allow_pickle=True).tolist()
+    df["embedding"] = carica_embedding(resource_path("embeddings.npy"), df["descrizione_lower"].tolist(), model)
+    df["TF-IDF"] = load_tfidf_cached(df["descrizione_lower"].tolist())
     
 
 
@@ -1038,7 +1048,7 @@ def ricerca_per_filtri():
                     
 
                 # Cerca il PDF nella cartella pdf_disegni/
-                pdf_filename = os.path.join("pdf_disegni", f"{row['Series']}.pdf")
+                pdf_filename = resource_path("pdf_disegni", f"{row['Series']}.pdf")
                 if os.path.exists(pdf_filename):
                     with open(pdf_filename, "rb") as pdf_file:
                         st.download_button(label="📄 Download PDF drawing", data=pdf_file, file_name=f"{row['Series']}.pdf", mime="application/pdf", key=f"pdf_{row['Series']}_{idx}")
@@ -1168,7 +1178,7 @@ def genera_pdf():
     c.save()
 
     # 2. Applica il template PDF aziendale come sfondo
-    template_path = os.path.join(os.getcwd(), "sfondo_template.pdf")
+    template_path = resource_path("sfondo_template.pdf")
     pdf_finale = applica_template_sfondo(pdf_path, template_path)
 
     return pdf_finale
@@ -1266,7 +1276,7 @@ def visualizza_carrello():
                 st.rerun()
 
         # Verifica se esiste un PDF associato e mostra il bottone per scaricarlo
-        pdf_filename = os.path.join("pdf_disegni", f"{item['Series']}.pdf")
+        pdf_filename = resource_path("pdf_disegni", f"{item['Series']}.pdf")
         
         if os.path.exists(pdf_filename):
             with open(pdf_filename, "rb") as pdf_file:
@@ -1311,5 +1321,8 @@ def visualizza_carrello():
 
 if __name__ == "__main__":
     main()
+
+
+
 
 
